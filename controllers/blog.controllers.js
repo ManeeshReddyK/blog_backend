@@ -1,6 +1,6 @@
 const Blog = require("../models/Blog.model");
 const User = require("../models/User.model");
-const logger = require("../logs/log4js");
+const { logger } = require("../logs/log4js");
 
 exports.getAllBlogs = (req, res, next) => {
     logger.info("getAllBlogs method");

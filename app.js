@@ -3,11 +3,13 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const logger = require('./logs/log4js');
+const { logger, requestLogger, log4js } = require('./logs/log4js');
 const authRoutes = require('./routes/auth.routes');
 const blogRoutes = require('./routes/blogs.routes');
 
 let app = express();
+
+app.use(log4js.connectLogger(requestLogger));
 
 app.use(bodyParser.json());
 

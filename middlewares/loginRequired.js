@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const logger = require('../logs/log4js');
+const { logger } = require('../logs/log4js');
 
 
 module.exports = (req, res, next) => {

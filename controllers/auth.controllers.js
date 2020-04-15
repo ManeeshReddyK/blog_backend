@@ -1,4 +1,4 @@
-const logger = require('../logs/log4js');
+const { logger } = require('../logs/log4js');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User.model');
