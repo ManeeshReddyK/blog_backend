@@ -36,6 +36,16 @@ module.exports = (req, res, next) => {
     }
 
     logger.info("token verified successfully");
+    //console.log('req.url:', req.url);
+
+    if (req.url === '/validateToken') {
+        return res.send({
+            success: true,
+            message: "token verified successfully",
+            statusCode: 200
+        });
+    } //for route validateToken 
+
     req.userId = decodedToken.userId;
     req.userEmail = decodedToken.email;
     next();

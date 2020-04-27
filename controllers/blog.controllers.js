@@ -78,6 +78,42 @@ exports.getAllBlogsWithRespectiveUser = (req, res, next) => {
 
 }
 
+exports.getBlogDetails = (req, res, next) => {
+    logger.info(`getBlogDetails Method`);
+
+    let blogId = req.params.blogId;
+
+    Blog.findById(blogId)
+        .then(data => {
+            if (!data) {
+                logger.error("blogId not found");
+                return res.json({
+                    success: false,
+                    message: "blogId not found",
+                    statusCode: 400
+                })
+            }
+            else {
+                logger.info(`blogId details retrived successfully`);
+                return res.json({
+                    success: true,
+                    message: "blogId details retrived successfully",
+                    data,
+                    statusCode: 400
+                })
+            }
+        })
+        .catch(error => {
+            logger.error("failed Blog.findById method");
+            logger.error("error: ", error);
+            return res.status(500).json({
+                success: false,
+                message: `blogs details retrived failed`,
+                statusCode: 500
+            })
+        })
+}
+
 exports.createBlog = (req, res, next) => {
 
     logger.info(`createBlog method`);

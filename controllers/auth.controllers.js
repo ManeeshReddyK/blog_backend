@@ -42,7 +42,7 @@ exports.register = (req, res, next) => {
                     })
                     .catch((error) => {
                         logger.error('error occured in bcryptjs.hash');
-                        logger.error('érror:', error);
+                        logger.error('error:', error);
                         return res.send({
                             success: false,
                             message: 'user registration failed',

@@ -9,5 +9,6 @@ router.post('/register', authController.register)
 
 router.post('/resetPassword', loginRequired, authController.resetPassword);
 
+router.get('/validateToken', loginRequired);
 
 module.exports = router;

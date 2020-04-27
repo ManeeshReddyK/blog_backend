@@ -6,8 +6,14 @@ const mongoose = require("mongoose");
 const { logger, requestLogger, log4js } = require('./logs/log4js');
 const authRoutes = require('./routes/auth.routes');
 const blogRoutes = require('./routes/blogs.routes');
+const path = require('path');
+const cors = require("cors");
 
 let app = express();
+
+app.use(cors());
+
+app.use(express.static('frontend'));
 
 app.use(log4js.connectLogger(requestLogger));
 
@@ -16,6 +22,10 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 
 app.use("/api", blogRoutes);
+
+app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
 
 mongoose.connect(`${process.env.MONGODB_URI}/${process.env.MONGODB_DBNAME}`, {
     useNewUrlParser: true,
