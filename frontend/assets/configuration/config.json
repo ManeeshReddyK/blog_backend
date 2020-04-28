@@ -1,0 +1,7 @@
+{
+    "production": true,
+    "url": "https://blogsapplication.herokuapp.com",
+    "protocol": "http",
+    "ip": "localhost",
+    "port": "3000"
+}
